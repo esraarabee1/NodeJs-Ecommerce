@@ -5,6 +5,9 @@ const {
   getSubCategory,
   getSubCategories,
   createFilterObj,
+  updateSubCategory,
+  deleteSubCategory,
+  setCategoryIdToBody,
 } = require("../services/subCategoryService");
 const {
   createSubCategoryValidator,
@@ -22,5 +25,10 @@ router
   .post(createSubCategoryValidator, createSubCategory)
   .get(createFilterObj, getSubCategories);
 
-router.route("/:id").get(getSubCategoryValidator, getSubCategory);
+router
+  .route("/:id")
+  .get(getSubCategoryValidator, getSubCategory)
+  .put(updateSubCategoryValidator, updateSubCategory)
+  .delete(deleteSubCategoryValidator, deleteSubCategory);
+
 module.exports = router;
